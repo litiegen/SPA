@@ -1,13 +1,15 @@
 module.exports = function (grunt) {
   grunt.initConfig({
-    less: {
-      compile: {
-        files: { 'dist/compiled.css': 'css/*.less' }
-      } 
+    imagemin: {                               
+      files: {
+        expand: true,
+        src: ['images/*.{png,jpg,gif}'],
+        dest: 'dist/'
+      }
     }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-contrib-imagemin');
 
-  grunt.registerTask('default', ['less:compile']);
+  grunt.registerTask('default', ['imagemin']);    
 };
