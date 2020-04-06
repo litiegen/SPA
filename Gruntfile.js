@@ -1,12 +1,14 @@
 module.exports = function (grunt) {
-    grunt.initConfig({
-      clean: {
-        js: 'dist/js',
-        css: 'dist/css'
+  grunt.initConfig({
+    concat: {
+      js: {
+        src: ['rectangle.js', 'calc.js'],
+        dest: 'dist/bundle.js'
       }
-    });
-  
-    grunt.loadNpmTasks('grunt-contrib-clean');
-  
-    grunt.registerTask('default', ['clean']); 
-  };
+    }
+  });
+
+  grunt.loadNpmTasks('grunt-contrib-concat');
+
+  grunt.registerTask('default', ['concat']);
+};
