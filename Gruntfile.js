@@ -1,14 +1,15 @@
+  
 module.exports = function (grunt) {
   grunt.initConfig({
-    concat: {
-      js: {
-        src: ['rectangle.js', 'calc.js'],
-        dest: 'dist/bundle.js'
-      }
+    csslint: {
+      options: {
+        csslintrc: '.csslintrc'
+      },
+      src: ['*.css']
     }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-csslint');
 
-  grunt.registerTask('default', ['concat']);
+  grunt.registerTask('default', ['csslint']);
 };
