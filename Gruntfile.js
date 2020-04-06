@@ -1,18 +1,34 @@
 module.exports = function (grunt) {
   grunt.initConfig({
-    htmlmin: {
+    mochacli: {
       options: {
-        collapseWhitespace: true,
-        preserveLineBreaks: false
+        reporter: 'spec',
+        bail: true
       },
-      files: {
-        src: './index.html',
-        dest: 'dist/index.html'
+      all: ['test/*.js']
+    },
+    mocha_istanbul: {
+      coverage: {
+        src: 'test'
+      }
+    },
+    istanbul_check_coverage: {
+      default: {
+        options: {
+          coverageFolder: 'coverage*',
+          check: {
+            lines: 90,
+            statements: 90
+          }
+        }
       }
     }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-htmlmin');
+  grunt.loadNpmTasks('grunt-mocha-cli');
+  grunt.loadNpmTasks('grunt-mocha-istanbul');
 
-  grunt.registerTask('default', ['htmlmin']); 
+  grunt.registerTask('default', ['mochacli']);   
+  grunt.registerTask('cover', ['mocha_istanbul']);
+  grunt.registerTask('check-cover', ['istanbul_check_coverage']);
 };
