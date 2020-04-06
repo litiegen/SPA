@@ -1,14 +1,18 @@
 module.exports = function (grunt) {
   grunt.initConfig({
-    htmlhint: {
+    htmlmin: {
       options: {
-        htmlhintrc: '.htmlhintrc'
+        collapseWhitespace: true,
+        preserveLineBreaks: false
       },
-      src: ['*.html']
+      files: {
+        src: './index.html',
+        dest: 'dist/index.html'
+      }
     }
   });
 
-  grunt.loadNpmTasks('grunt-htmlhint');
+  grunt.loadNpmTasks('grunt-contrib-htmlmin');
 
-  grunt.registerTask('default', ['htmlhint']);
+  grunt.registerTask('default', ['htmlmin']); 
 };
