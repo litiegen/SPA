@@ -1,17 +1,15 @@
 module.exports = function (grunt) {
   grunt.initConfig({
-    mocha: {
-      test: {
-        src: ['test/index.html'],
-      },
-      options: {
-        run: true,
-        reporter: 'Dot'
-      }
+    uglify: {
+      release:{
+        files: {
+          'js/jquery.min.js': 'js/jquery.js'
+        }
+      }       
     }
   });
 
-  grunt.loadNpmTasks('grunt-mocha');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
 
-  grunt.registerTask('default', ['mocha']);
+  grunt.registerTask('default', ['uglify:release']);
 };
